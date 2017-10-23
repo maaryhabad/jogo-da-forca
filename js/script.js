@@ -1,11 +1,13 @@
-var botao = document.getElementById("btnCadastrar");
+//var botao = document.getElementById("btn-cadastrar");
 
 // botao.onclick = function(event) {
 //     event.preventDefault();
 //     alert("mensagem marota");
 // };  ISSO AQUI É IGUAL AO CÓDIGO ABAIXO
+var comecou = false;
+var letrasChutadas = [];
 
-$("#btnCadastrar").click(function(event) { //("#btnCadastrar") você pode chamar como chama no css, por exemplo ("#cadastro button")
+$("#cadastro button").click(function(event) { //("#btnCadastrar") você pode chamar como chama no css, por exemplo ("#cadastro button")
     event.preventDefault();
     
     //Declarar variável palavra com o valor do input
@@ -17,14 +19,12 @@ $("#btnCadastrar").click(function(event) { //("#btnCadastrar") você pode chamar
         alert("Por favor, preencha o campo");
     } else {
         //Se não estiver vazio, montar os underlines
+        palavra = palavra.trim();
+
         for (i=0; i < palavra.length; i++) {
             var span = $("<span>"+palavra[i]+"</span>");
             span.appendTo(".letras");
-            
-            $(".letras").onkeyup(function(){
-                $(".letras").css("color", "pink");
-            });
-
+            console.log(palavra);
         }
         
         //Se não estiver vazio mostrar a tela forca
@@ -32,6 +32,31 @@ $("#btnCadastrar").click(function(event) { //("#btnCadastrar") você pode chamar
             $("#forca").addClass("visivel");
             //Remover classe na tela do cadastro
             $("#cadastro").removeClass("visivel");
+            comecou = true;
     }
     
+});
+
+$(document).keydown(function(event) {
+    if (comecou) {
+        var letra = event.key;
+        //Validando se é apenas uma letra
+        if (letra.length > 1) {
+            return;
+        }
+        //Registrar a letra utilizada
+        letrasChutadas.push(letra);
+        var span = $("<span>"+letra+"<span>");
+        span.appendTo(".letras-usadas");
+        //Letra existe na palavra cadastrada?
+            //Se sim 
+                //mostra no campo a letra correspondente
+                //Se a palavra estiver completa
+                    //Mostra o final correto
+
+            //Se não 
+                //mostra o membro do boneco
+        
+    }
+
 });
