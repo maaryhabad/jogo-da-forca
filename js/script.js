@@ -11,14 +11,27 @@ $("#btnCadastrar").click(function(event) { //("#btnCadastrar") você pode chamar
     //Declarar variável palavra com o valor do input
     var palavra = $("#palavra").val();
 
-    if (palavra == "") {
-        alert("Por favor, preencha o campo");
-    }
-
-
     //Verificar se campo está vazio
+    if (palavra == "") {
+        //Se estiver vazio mostra a mensagem de erro
+        alert("Por favor, preencha o campo");
+    } else {
+        //Se não estiver vazio, montar os underlines
+        for (i=0; i < palavra.length; i++) {
+            var span = $("<span>"+palavra[i]+"</span>");
+            span.appendTo(".letras");
+            
+            $(".letras").onkeyup(function(){
+                $(".letras").css("color", "pink");
+            });
 
-    //Se estiver vazio mostra a mensagem de erro
-
-    //Se não estiver vazio, montar os underlines
+        }
+        
+        //Se não estiver vazio mostrar a tela forca
+            //Adicionar classe na tela da forca
+            $("#forca").addClass("visivel");
+            //Remover classe na tela do cadastro
+            $("#cadastro").removeClass("visivel");
+    }
+    
 });

@@ -79,6 +79,7 @@ h3{
 }
 .letras{
     display: flex;
+    color: transparent;
 }
 .letras span{
     font-weight: 300;
