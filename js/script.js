@@ -6,12 +6,13 @@
 // };  ISSO AQUI É IGUAL AO CÓDIGO ABAIXO
 var comecou = false;
 var letrasChutadas = [];
+var palavra = "";
 
 $("#cadastro button").click(function(event) { //("#btnCadastrar") você pode chamar como chama no css, por exemplo ("#cadastro button")
     event.preventDefault();
     
     //Declarar variável palavra com o valor do input
-    var palavra = $("#palavra").val();
+    palavra = $("#palavra").val();
 
     //Verificar se campo está vazio
     if (palavra == "") {
@@ -44,18 +45,36 @@ $(document).keydown(function(event) {
         if (letra.length > 1) {
             return;
         }
+        //Vai verificar se a letra já foi utilizada
+        if(letrasChutadas.indexOf(letra) != -1) {
+            return;
+        }
+
         //Registrar a letra utilizada
         letrasChutadas.push(letra);
         var span = $("<span>"+letra+"<span>");
         span.appendTo(".letras-usadas");
         //Letra existe na palavra cadastrada?
+        if(letrasChutadas.indexOf(letra) != -1) {
             //Se sim 
                 //mostra no campo a letra correspondente
+                for (var i=0 ; i<palavra.length; i++) {
+                    var letra2 = palavra[i];
+                    if (letra == letra2) {
+                        $(".letras span").eq(i).addClass("visivel"); //eq é pra pegar o índice
+                    }
+                }
                 //Se a palavra estiver completa
                     //Mostra o final correto
-
+        } else {
             //Se não 
                 //mostra o membro do boneco
+                //Se excedeu as tentativas
+                    //Mostra a família triste
+        }
+            
+
+            
         
     }
 
