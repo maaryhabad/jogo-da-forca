@@ -91,3 +91,17 @@ $(document).keydown(function (event) {
     }
 
 });
+
+$(".btn-recomecar").click(function (event){
+    $("#cadastro").addClass("visivel");
+    $("#perdeu").removeClass("visivel");
+    $("#ganhou").removeClass("visivel");
+    comecou = false;
+    letrasChutadas= [];
+    palavra = "";
+    erro = 0;
+    existe = false;
+    $(".letras").html("");
+    $(".letras-usadas").html("");
+    $(".corpo").children().attr("class", "st0");
+});
