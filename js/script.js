@@ -60,12 +60,17 @@ $(document).keydown(function(event) {
                 //mostra no campo a letra correspondente
                 for (var i=0 ; i<palavra.length; i++) {
                     var letra2 = palavra[i];
-                    if (letra == letra2) {
+                    if (letra == letra2) {                  
                         $(".letras span").eq(i).addClass("visivel"); //eq é pra pegar o índice
-                    }
+                    } 
                 }
                 //Se a palavra estiver completa
+                if($(".letras span:not(.visivel)").length == 0) {
                     //Mostra o final correto
+                    $("#ganhou").addClass("visivel");
+                    $("#perdeu").removeClass("visivel");
+                }
+                    
         } else {
             //Se não 
                 //mostra o membro do boneco
